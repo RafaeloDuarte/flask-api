@@ -1,18 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-@app.route('/')
-def hi():
-    return render_template('hello.html', list_of_names = ['Chis', 'Rafa', 'Pizza'])
-
-@app.route('/<string:name>')
-def hello_world(name):
-    return f'Hello, {name}!'
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
+@app.route('/', methods=['GET', 'POST'])
+def hello_world():
+    request_method = request.method
+    return render_template('hello.html', request_method = request_method)
 
 
 if __name__ == "__main__":

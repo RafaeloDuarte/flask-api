@@ -6,15 +6,13 @@ app = Flask(__name__)
 def hello_world():
     request_method = request.method
     if request_method == 'POST':
-        print('---------------')
-        print(request.form)
-        print('---------------')
-        return redirect(url_for('name'))
+        first_name = request.form['name']
+        return redirect(url_for('name', first_name=first_name))
     return render_template('helloform.html', request_method = request_method)
 
-@app.route('/name')
-def name():
-    return 'name'
+@app.route('/name/<string:first_name>')
+def name(first_name):
+    return f'{first_name}'
 
 if __name__ == "__main__":
     app.run(debug = True)

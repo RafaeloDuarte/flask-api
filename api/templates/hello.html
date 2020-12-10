@@ -6,6 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Renderizando template</h1>
+    {% for i in list_of_names %}
+    <ul>
+        <li>
+            {{i}}
+        </li>
+    </ul>
+    {%endfor%}
 </body>
 </html>

@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hi():
-    return render_template('hello.html')
+    return render_template('hello.html', list_of_names = ['Chis', 'Rafa', 'Pizza'])
 
 @app.route('/<string:name>')
 def hello_world(name):
